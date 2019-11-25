@@ -3,7 +3,7 @@
    authorship declaration
 
    __author__ Steve Ganzulya
-   __date__ March 2019
+   __date__ November 2019
    __version__ 1.0
  
    text to describe the purpose of this script
@@ -200,14 +200,14 @@ if __name__ == '__main__':
             print('usage report for remote host:',args.rhost)
         if args.type:
             print('usage report type:',args.type)
-    else:
-        recordlist = get_login_rec()
-        recordlist += read_login_rec(list(args.files)) 
-        if args.type:
-            string = "Daily" if args.type == 'daily' else "Weekly"
-            subject = args.user if args.user else args.rhost if args.rhost else None 
-            string += " list for " + str(subject)
-            string += "\n" + ("=" * len(string))
-            print(string)
-            cal_daily_usage(subject,recordlist) if (args.type == "daily") else cal_weekly_usage(subject,recordlist)
+    
+    recordlist = get_login_rec()
+    recordlist += read_login_rec(list(args.files)) 
+    if args.type:
+        string = "Daily" if args.type == 'daily' else "Weekly"
+        subject = args.user if args.user else args.rhost if args.rhost else None 
+        string += " list for " + str(subject)
+        string += "\n" + ("=" * len(string))
+        print(string)
+        cal_daily_usage(subject,recordlist) if (args.type == "daily") else cal_weekly_usage(subject,recordlist)
 
